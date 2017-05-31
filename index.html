@@ -2,28 +2,71 @@
 <html>
 	<head>
 		<title>Twitter basic</title>
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina|Cabin|Hind|Lora" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" src="assets/main.css">
+		<link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	</head>
 	<body>
 		<header>
-			<label id="cntClicks">Contador de clicks: </label>
-			<h2>Twitter</h2>
-		</header>
-		<form>
-			<textarea cols="70" rows="3" maxlength="140" id="textarea"></textarea><br>
-			<span>De: </span>
-			<input type="text" id="name"/>
-			<span id="print"></span>
-			<span>/</span>
-			<span>140</span>
-			<input type="button" value="enviar" id="enviar">
-		</form>
-		<hr>
-		<h3>Tweet Stories</h3>
-		<section id="newComents">
 
-		</section>
-		<script type="text/javascript" src=assets/main.js></script>
+		</header>
+		<div class="navbar-fixed">
+			<nav>
+			    <div class="nav-wrapper grey lighten-5 row">
+			      <ul id="nav-mobile" class="col s12">
+			        <li class="col s1 offset-s1"><a href="sass.html" class="grey-text center-align"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+			        <li class="col s1"><a href="badges.html" class="grey-text center-align"><i class="fa fa-bolt" aria-hidden="true"></i></a></li>
+			        <li class="col s1"><a href="collapsible.html" class="grey-text center-align"><i class="fa fa-bell" aria-hidden="true"></i></a></li>
+			        <li class="col s1"><a href="collapsible.html" class="grey-text center-align"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+			        <li class="col s3 center-align"><a href="#" class="logo blue-text darken-1 center-align"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+			        <li class="col s1 center-align"><a href="sass.html" class="grey-text center-align"><i class="material-icons">search</i></a></li>
+			        <li class="col s1 center-align"><a href="sass.html" class="grey-text center-align"><i class="fa fa-user-circle" aria-hidden="true"></i></a></li>
+			        <li class="col s1 center-align"><button class="btn waves-effect waves-light blue" type="submit" name="action">Twittear<i class="material-icons right">send</i>
+				  	</button></li>
+			      </ul>
+		    	</div>
+		  	</nav>
+		</div>
+		<section class="container">
+			<section>
+				<div class="row">
+					<div class="col s12">
+						<label id="cntClicks">Contador de clicks: </label><label class="cont"></label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12">
+						<img src="assets/imgs/twitter.png">
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="row">
+					<div class="col s12">
+						<form>
+							<div class="col s8 offset-s2 input-field">
+								<textarea class="col s12 materialize-textarea" rows="10" id="textarea" data-length="140"></textarea><br>
+							</div>
+							<div class="col s8 offset-s2 input-field" id="enviar">
+								<button class="btn waves-effect waves-light blue right" type="submit" name="action" id="enviar">Twittear<i class="material-icons right">send</i>
+						  		</button>
+							</div>
+						</form>
+					</div>
+				</div>		
+			</section>
+			<section>
+				<h3>Tweet Stories</h3>
+				<section id="newComents">
+				</section>
+			</section>
+		</section>>
+		<script src="assets/js/jquery-3.2.1.min.js"></script>
+    	<script type="text/javascript" src="assets/js/materialize.min.js"></script>
+    	<script type="text/javascript" src=assets/main.js></script>
+		<script src="https://use.fontawesome.com/eb689b446d.js"></script>
 	</body>
 </html>
