@@ -15,18 +15,39 @@
 		</header>
 		<div class="navbar-fixed">
 			<nav>
-			    <div class="nav-wrapper grey lighten-5 row">
-			      <ul id="nav-mobile" class="col s12">
-			        <li class="col s1 offset-s1"><a href="sass.html" class="grey-text center-align"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-			        <li class="col s1"><a href="badges.html" class="grey-text center-align"><i class="fa fa-bolt" aria-hidden="true"></i></a></li>
-			        <li class="col s1"><a href="collapsible.html" class="grey-text center-align"><i class="fa fa-bell" aria-hidden="true"></i></a></li>
-			        <li class="col s1"><a href="collapsible.html" class="grey-text center-align"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-			        <li class="col s3 center-align"><a href="#" class="logo blue-text darken-1 center-align"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-			        <li class="col s1 center-align"><a href="sass.html" class="grey-text center-align"><i class="material-icons">search</i></a></li>
-			        <li class="col s1 center-align"><a href="sass.html" class="grey-text center-align"><i class="fa fa-user-circle" aria-hidden="true"></i></a></li>
-			        <li class="col s1 center-align"><button class="btn waves-effect waves-light blue" type="submit" name="action">Twittear<i class="material-icons right">send</i>
-				  	</button></li>
-			      </ul>
+			    <div class="nav-wrapper grey-text white lighten-5 row">
+			    	<a href="#" data-activates="mobile-demo" class="button-collapse grey-text"><i class="material-icons ">menu</i></a>
+			    	<a href="#" class="brand-logo blue-text darken-1 center-align col s2 offset-s1"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			      	<ul id="nav-mobile" class="col s12 hide-on-med-and-down">
+				        <li class="col s1 offset-s2">
+				        		<a href="#" class="grey-text center-align"><i class="fa fa-home" aria-hidden="true"></i></a>
+				        </li>
+				        <li class="col s1">
+				        		<a href="#" class="grey-text center-align"><i class="fa fa-bolt" aria-hidden="true"></i></a>
+				        </li>
+				        <li class="col s1">
+				        		<a href="#" class="grey-text center-align"><i class="fa fa-bell" aria-hidden="true"></i></a>
+				        </li>
+				        <li class="col s1">
+				        		<a href="#" class="grey-text center-align"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+				        </li>
+				        <li class="col s1 center-align">
+				        		<a href="#" class="grey-text center-align"><i class="material-icons">search</i></a>
+				        </li>
+				        <li class="col s1 center-align">
+				        		<a href="#" class="grey-text center-align"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+				        </li>
+				        <li class="col s1 center-align">
+				        		<button class="btn waves-effect waves-light blue" type="submit" name="action">Twittear<i class="material-icons right">send</i></button>
+				        </li>
+			      	</ul>
+			      	<ul class="side-nav" id="mobile-demo">
+				        <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>Inicio</a></li>
+				        <li><a href="#"><i class="fa fa-bolt" aria-hidden="true"></i>Momentos</a></li>
+				        <li><a href="#"><i class="fa fa-bell" aria-hidden="true"></i>Notificaciones</a></li>
+				        <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>Mensajes</a></li>
+				        <li class="col s1 center-align"><a href="#"><button class="btn waves-effect waves-light blue" type="submit" name="action">Twittear</button></a></li>
+				    </ul>
 		    	</div>
 		  	</nav>
 		</div>
@@ -34,29 +55,25 @@
 			<section>
 				<div class="row">
 					<div class="col s12">
-						<label id="cntClicks">Contador de clicks: </label><label class="cont"></label>
+						<p>Contador de clicks:<span id="" class="cont"></span></p>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col s12">
-						<img src="assets/imgs/twitter.png">
+					<div class="hide-on-med-and-down col s3">
+						<img src="assets/imgs/twitter.png" class="img">
 					</div>
 				</div>
 			</section>
-			<section>
-				<div class="row">
-					<div class="col s12">
+			<section class="container">
 						<form>
-							<div class="col s8 offset-s2 input-field">
+							<div class="col s10 offset-s1  input-field">
 								<textarea class="col s12 materialize-textarea" rows="10" id="textarea" data-length="140"></textarea><br>
 							</div>
-							<div class="col s8 offset-s2 input-field" id="enviar">
+							<div class="col s10 offset-s1 input-field" id="enviar">
 								<button class="btn waves-effect waves-light blue right" name="action" id="enviar">Twittear<i class="material-icons right">send</i>
 						  		</button>
-							</div>
 						</form>
-					</div>
-				</div>		
+					</div>		
 			</section>
 			<section>
 				<h3>Tweet Stories</h3>
