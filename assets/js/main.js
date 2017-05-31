@@ -1,4 +1,3 @@
-
 //alert("hola")
 var counter = 0;
 var $nam = $("#name");
@@ -8,6 +7,9 @@ var cargarPagina=function(){
 	var $textarea = $("#textarea");
 	//Eventos
 	$(document).click(counting);
+	$button.click(function(e){
+		e.preventDefault();
+	});
 	$button.click(send);
 	$button.click(noCounting);
 	$button.click(clear)
@@ -19,32 +21,28 @@ var cargarPagina=function(){
 function counting(){
 	counter +=1;
 	var $printables = $("#cntClicks");
-	$printables.innerText = "Contador de clicks: " + counter;
+	var printablesNode = counter;
+	$printables.append(printablesNode + ",");
 }
 
 function send() {
 	if(textarea.value != " " || $nam.value != " "){
 		var $coments = $('#newComents');
-	 	var line = document.createElement('hr');
-		var container =  document.createElement('article');
-		var nickName = document.createElement('label');
-		var text = document.createElement('p');
-		var txtNode = document.createTextNode(textarea.value);
-		var nameNode = document.createTextNode("Por: " + $nam.value);
-		nickName.append(nameNode);
+		var container =  $('<article/>', { 'class': 'card-panel hoverable blue lighten-4' });
+		var text = $('<p/>');
+		var txtNode = textarea.value;
+		var nameNode = "Por: " + $nam.value;
 		text.append(txtNode);
-		container.append(line);
-		container.append(nickName);
-		container.append(text);
 		$coments.append(container);
 		//Botón eliminar
-		var remove = document.createElement('input');
-		remove.type = "button";
-		remove.value = "eliminar";
-		remove.onclick = function(){
-			coments.remove($container)
-		};
-		container.append(remove)
+		var remove = $('<a/>', { 'class': 'waves-effect waves-light blue btn right' });
+		var buttonNode = "x"
+		remove.append(buttonNode);
+		remove.click(function(){
+			remove.parent().remove();
+		});
+		container.append(remove);
+		container.append(text);
 	} else {
 		alert("Por favor ingresa algo antes de enviar")
 	}
