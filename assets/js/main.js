@@ -1,24 +1,33 @@
-//alert("hola")
+//IIFEImmediatly Invoked Function Expression
+(function(){
 var counter = 0;
 var $nam = $("#name");
 var $printChar = $("#print");
+var $buttonSend = $("#enviar");
+var $textarea = $("#textarea");
+
 var cargarPagina=function(){
-	var $button = $("#enviar");
-	var $textarea = $("#textarea");
 	//Eventos
 	$(document).on("click", ".count", counting);
-	$button.click(function(e){
+	$buttonSend.click(function(e){
 		e.preventDefault();
 	});
-	$button.click(send);
-	$button.click(noCounting);
-	$button.click(clear)
-	$textarea.click(noCounting);
+	$buttonSend.click(send);
+	$buttonSend.click(noCounting);
+	$buttonSend.click(clear)
+	$textarea.keyup(validation);
 	$nam.click(noCounting);
 	$textarea.click(charCount);
 	$(".button-collapse").sideNav();
 }
+var validation=function(){
 
+	if($(this).val().trim().length>0){
+		$buttonSend.removeAttr("disabled");
+	} else {
+			$buttonSend.attr("disabled", true);
+	}
+};
 function counting(){
 	counter +=1;
 	var $printables = $(this).find("span");
@@ -37,9 +46,11 @@ function send() {
 		var txtNode = " " +textarea.value;
 		//imagen de usuario
 		var $iconUser =  $('<span/>');
+		var $linkUser = $('<a/>');
 		var $imgUser = $('<img>',{'class': 'responsive-img circle col s12'});
 		$imgUser.attr('src', 'assets/imgs/itzel.ico');
-		$iconUser.append($imgUser);
+		$linkUser.append($imgUser);
+		$iconUser.append($linkUser);
 		//Nombre de Usuario
 		var $nickName =$('<a/>');
 		var name = "@ixpyMoonlight:";
@@ -85,6 +96,7 @@ function send() {
 }
 
 function noCounting(){
+
 	event.stopPropagation();
 }
 
@@ -99,3 +111,4 @@ function clear(){
 }
 
 $(document).ready(cargarPagina);
+}) ();
