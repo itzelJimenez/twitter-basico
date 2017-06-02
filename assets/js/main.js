@@ -1,11 +1,12 @@
 //IIFEImmediatly Invoked Function Expression
 (function(){
 var counter = 0;
-var $nam = $("#name");
-var $printChar = $("#print");
+var newResult=0;
 var $buttonSend = $("#enviar");
 var $textarea = $("#textarea");
-
+var $areaComents = $("#areaComents");
+var $accountantChar = $('#accountantChar');
+var $max_letras = 140;
 var cargarPagina=function(){
 	//Eventos
 	$(document).on("click", ".count", counting);
@@ -16,7 +17,7 @@ var cargarPagina=function(){
 	$buttonSend.click(noCounting);
 	$buttonSend.click(clear)
 	$textarea.keyup(validation);
-	$nam.click(noCounting);
+	$textarea.keyup(charCount);
 	$textarea.click(charCount);
 	$(".button-collapse").sideNav();
 }
@@ -28,14 +29,13 @@ var validation=function(){
 			$buttonSend.attr("disabled", true);
 	}
 };
-function counting(){
+var counting = function(){
 	counter +=1;
 	var $printables = $(this).find("span");
 	var printablesNode = counter;
 	$printables.text(printablesNode);
 }
-
-function send() {
+var send = function() {
 	if(textarea.value != " " || $nam.value != " "){
 		var $coments = $('#newComents');
 		var $container =  $('<section/>', { 'class': 'card-panel hoverable blue lighten-4' });
@@ -114,7 +114,7 @@ function send() {
 		});
 		$delete.append($remove);
 		//contenedor botones 
-		var $elementsButtons = $('<span/>',{'class': 'col s2'});
+		var $elementsButtons = $('<span/>',{'class': 'col s6 m2'});
 		$elementsButtons.append($delete);
 		$elementsButtons.append($likes);
 		$elementsButtons.append($emoticos);
@@ -132,24 +132,36 @@ function send() {
 		alert("Por favor ingresa algo antes de enviar");
 	}
 }
-
-function noCounting(){
+var noCounting = function(){
 
 	event.stopPropagation();
 }
-
-function charCount(){
-	var numChar = textarea.value.length;
-	$printChar.innerText = numChar;
+var charCount = function(){
+	var texto = $textarea.val().length;
+	var result = $max_letras - texto;
+	console.log(result);
+	$accountantChar.text(result);
+	if (result<=20){
+		$textarea.addClass('textarea-underline_red');	
+	}else{$textarea.removeClass('textarea-underline_red');}
+	if(result>20&&result<40){
+		$textarea.addClass('textarea-underline_orange');
+	}else{$textarea.removeClass('textarea-underline_orange');}
+	if(result<0){
+		$buttonSend.attr("disabled", true);
+	}
 }
-
-function clear(){
-	textarea.value = " ";
-	$nam.value = " ";
+var clear = function(){
+	$textarea.val("");
+	$accountantChar.text($max_letras);
+	$textarea.removeClass('textarea-underline_red');
+	$textarea.removeClass('textarea-underline_orange');
 }
-function getTime(){
+var getTime = function(){
 	var now = new Date();
-	var time = now.getHours()+':'+ (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes());
+	var hours = (now.getHours() < 10 ? "0" + now.getHours() : now.getHours());
+	var minuts = (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes());
+	var time = hours+':'+ minuts;
 	return time;
 }
 $(document).ready(cargarPagina);

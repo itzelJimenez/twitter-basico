@@ -13,3 +13,9 @@
 .btn-floating:hover{
 	background-color: #fff;
 }
+.textarea-underline_orange{
+	border-bottom: 3px solid #ffff00 !important;
+}
+.textarea-underline_red{
+	border-bottom: 3px solid #b71c1c !important;
+}
