@@ -19,3 +19,6 @@
 .textarea-underline_red{
 	border-bottom: 3px solid #b71c1c !important;
 }
+.p-adjust{
+    word-wrap: break-word;
+}

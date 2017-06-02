@@ -36,13 +36,13 @@ var counting = function(){
 	$printables.text(printablesNode);
 }
 var send = function() {
-	if(textarea.value != " " || $nam.value != " "){
+	if($textarea.val() !=0){
 		var $coments = $('#newComents');
 		var $container =  $('<section/>', { 'class': 'card-panel hoverable blue lighten-4' });
 		var $row1 =$('<div/>', {'class':'row'});
 		var $row2 =$('<div/>', {'class': 'row'});
 		var $textRow=$('<div/>');
-		var $textComent = $('<p/>', {'class': 'col s10 offset-s1'});
+		var $textComent = $('<p/>', {'class': 'col s10 offset-s1 p-adjust'});
 		var txtNode = " " +textarea.value;
 		//imagen de usuario
 		var $iconUser =  $('<span/>');
@@ -56,7 +56,7 @@ var send = function() {
 		var name = "@ixpyMoonlight:";
 		$nickName.append(name);
 		//Contenedor elementos usuario
-		var $elementsUser = $('<span/>',{'class': 'valign-wrapper col s6 m8 l9'});
+		var $elementsUser = $('<span/>',{'class': 'valign-wrapper col s6 m7 l8'});
 		$elementsUser.append($iconUser);
 		$elementsUser.append($nickName);
 		//Agregando fecha de publicación
@@ -114,7 +114,7 @@ var send = function() {
 		});
 		$delete.append($remove);
 		//contenedor botones 
-		var $elementsButtons = $('<span/>',{'class': 'col s6 m2'});
+		var $elementsButtons = $('<span/>',{'class': 'col s6 m3'});
 		$elementsButtons.append($delete);
 		$elementsButtons.append($likes);
 		$elementsButtons.append($emoticos);
