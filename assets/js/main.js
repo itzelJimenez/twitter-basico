@@ -1,11 +1,9 @@
 //IIFEImmediatly Invoked Function Expression
 (function(){
-var counter = 0;
 var $nam = $("#name");
-var $printChar = $("#print");
 var $buttonSend = $("#enviar");
 var $textarea = $("#textarea");
-
+var $areaComents = $("#areaComents");
 var cargarPagina=function(){
 	//Eventos
 	$(document).on("click", ".count", counting);
@@ -16,6 +14,7 @@ var cargarPagina=function(){
 	$buttonSend.click(noCounting);
 	$buttonSend.click(clear)
 	$textarea.keyup(validation);
+	$textarea.keyup(charCount);
 	$nam.click(noCounting);
 	$textarea.click(charCount);
 	$(".button-collapse").sideNav();
@@ -28,14 +27,15 @@ var validation=function(){
 			$buttonSend.attr("disabled", true);
 	}
 };
-function counting(){
+var counter = 0;
+var counting = function(){
 	counter +=1;
 	var $printables = $(this).find("span");
 	var printablesNode = counter;
-	$printables.text(printablesNode);
+	$printables.text("hola");
 }
 
-function send() {
+var send = function() {
 	if(textarea.value != " " || $nam.value != " "){
 		var $coments = $('#newComents');
 		var $container =  $('<section/>', { 'class': 'card-panel hoverable blue lighten-4' });
@@ -133,21 +133,24 @@ function send() {
 	}
 }
 
-function noCounting(){
+var noCounting = function(){
 
 	event.stopPropagation();
 }
 
-function charCount(){
-	var numChar = textarea.value.length;
-	$printChar.innerText = numChar;
+var charCount = function(){
+	var $accountantChar = $('#accountantChar');
+	var $max_letras = $textarea.attr("maxlength");
+	var texto = $textarea.val().length;
+	var resultado = $max_letras - texto;
+	console.log(resultado);
+	$accountantChar.text(resultado);
 }
-
-function clear(){
-	textarea.value = " ";
+var clear = function(){
+	$textarea.value = " ";
 	$nam.value = " ";
 }
-function getTime(){
+var getTime = function(){
 	var now = new Date();
 	var time = now.getHours()+':'+ (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes());
 	return time;
