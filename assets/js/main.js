@@ -1,9 +1,12 @@
 //IIFEImmediatly Invoked Function Expression
 (function(){
-var $nam = $("#name");
+var counter = 0;
+var newResult=0;
 var $buttonSend = $("#enviar");
 var $textarea = $("#textarea");
 var $areaComents = $("#areaComents");
+var $accountantChar = $('#accountantChar');
+var $max_letras = 140;
 var cargarPagina=function(){
 	//Eventos
 	$(document).on("click", ".count", counting);
@@ -15,7 +18,6 @@ var cargarPagina=function(){
 	$buttonSend.click(clear)
 	$textarea.keyup(validation);
 	$textarea.keyup(charCount);
-	$nam.click(noCounting);
 	$textarea.click(charCount);
 	$(".button-collapse").sideNav();
 }
@@ -27,14 +29,12 @@ var validation=function(){
 			$buttonSend.attr("disabled", true);
 	}
 };
-var counter = 0;
 var counting = function(){
 	counter +=1;
 	var $printables = $(this).find("span");
 	var printablesNode = counter;
-	$printables.text("hola");
+	$printables.text(printablesNode);
 }
-
 var send = function() {
 	if(textarea.value != " " || $nam.value != " "){
 		var $coments = $('#newComents');
@@ -114,7 +114,7 @@ var send = function() {
 		});
 		$delete.append($remove);
 		//contenedor botones 
-		var $elementsButtons = $('<span/>',{'class': 'col s2'});
+		var $elementsButtons = $('<span/>',{'class': 'col s6 m2'});
 		$elementsButtons.append($delete);
 		$elementsButtons.append($likes);
 		$elementsButtons.append($emoticos);
@@ -132,27 +132,36 @@ var send = function() {
 		alert("Por favor ingresa algo antes de enviar");
 	}
 }
-
 var noCounting = function(){
 
 	event.stopPropagation();
 }
-
 var charCount = function(){
-	var $accountantChar = $('#accountantChar');
-	var $max_letras = $textarea.attr("maxlength");
 	var texto = $textarea.val().length;
-	var resultado = $max_letras - texto;
-	console.log(resultado);
-	$accountantChar.text(resultado);
+	var result = $max_letras - texto;
+	console.log(result);
+	$accountantChar.text(result);
+	if (result<=20){
+		$textarea.addClass('textarea-underline_red');	
+	}else{$textarea.removeClass('textarea-underline_red');}
+	if(result>20&&result<40){
+		$textarea.addClass('textarea-underline_orange');
+	}else{$textarea.removeClass('textarea-underline_orange');}
+	if(result<0){
+		$buttonSend.attr("disabled", true);
+	}
 }
 var clear = function(){
-	$textarea.value = " ";
-	$nam.value = " ";
+	$textarea.val("");
+	$accountantChar.text($max_letras);
+	$textarea.removeClass('textarea-underline_red');
+	$textarea.removeClass('textarea-underline_orange');
 }
 var getTime = function(){
 	var now = new Date();
-	var time = now.getHours()+':'+ (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes());
+	var hours = (now.getHours() < 10 ? "0" + now.getHours() : now.getHours());
+	var minuts = (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes());
+	var time = hours+':'+ minuts;
 	return time;
 }
 $(document).ready(cargarPagina);
