@@ -14,8 +14,9 @@ var cargarPagina=function(){
 		e.preventDefault();
 	});
 	$buttonSend.click(send);
-	$buttonSend.click(noCounting);
+
 	$buttonSend.click(clear)
+	$buttonSend.click(validation);
 	$textarea.keyup(validation);
 	$textarea.keyup(charCount);
 	$textarea.click(charCount);
